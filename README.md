@@ -17,3 +17,4 @@ This is a node.js application where users can input details about employees into
 ## Demo
 Please use the link down below to watch a video demo of the app:
 
+https://youtu.be/ObJcchW8KkQ 
