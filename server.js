@@ -16,6 +16,7 @@ const promptMessages = {
     exit: "Exit",
 };
 
+// Connection & Port
 const connection = mysql.createConnection({
     host: 'localhost',
 
@@ -23,8 +24,8 @@ const connection = mysql.createConnection({
 
     user: 'root',
 
-    password: 'm00m00c0ws',
-    database: 'employees'
+    password: 'C4rr0754r3r3d!',
+    database: "employees"
 });
 
 connection.connect(err => {
@@ -32,6 +33,7 @@ connection.connect(err => {
     prompt();
 });
 
+// Beginning of CLI functions
 function prompt() {
     inquirer.prompt({
         name: 'action',
@@ -85,6 +87,7 @@ function prompt() {
     })
 }
 
+// Specific functions
 function viewAllEmployees() {
     const query = `SELECT employee.id, employee.first_name, employee.last_name, role.title, department.name AS department, role.salary, CONCAT(manager.first_name, ' ', manager.last_name) AS manager
     FROM employee
@@ -152,6 +155,7 @@ function viewAllRoles() {
 
 }
 
+// Async & Bonus attempts
 async function addEmployee() {
     const addname = await inquirer.prompt(askName());
     connection.query('SELECT role.id, role.title FROM role ORDER BY role.id;', async (err, res) => {
